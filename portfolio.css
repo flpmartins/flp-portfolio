@@ -430,4 +430,8 @@ img.visible {
     max-width: 250px;
     justify-content: center;
   }
+
+  .intro-section {
+    flex-direction: column-reverse;
+  }
 }
