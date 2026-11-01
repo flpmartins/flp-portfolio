@@ -3,12 +3,22 @@
 <meta name="description" content="Portfólio de Filipe Martins — Desenvolvedor Full Stack especializado em JavaScript, React, Node.js e Go.">
 <meta name="keywords" content="JavaScript, TypeScript, React, Node.js, Go, Full Stack, Portfolio">
 <title>Filipe Martins — Desenvolvedor Full Stack</title>
+<script>
+(function () {
+    try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+    } catch (e) {}
+})();
+</script>
 <script src="assets/resource_3fa48481346f.js"></script>
 <script src="assets/lucide_latest_2eebd0ebe8c2.js"></script>
 <style>
 @import url("assets/css2_19fd9cc6b396.css");
 body { font-family: 'Inter', sans-serif; }
 html {
+    scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -38,6 +48,9 @@ html::-webkit-scrollbar {
     transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
     .reveal {
         opacity: 1;
         transform: none;
@@ -71,6 +84,76 @@ html::-webkit-scrollbar {
     animation-name: float-b;
     animation-duration: 8.5s;
 }
+
+/* ===== Dark theme ===== */
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+html.dark body { background-color: #08080a; color: #e5e7eb; }
+html.dark .bg-stone-300 { background-color: #08080a; }
+html.dark .bg-\[\#F3F3F1\] { background-color: #131316; }
+html.dark .bg-white:not(.keep-light) { background-color: #1c1c20; }
+html.dark .bg-white\/60 { background-color: rgba(255, 255, 255, 0.03); }
+html.dark .bg-gray-50 { background-color: #17171a; }
+html.dark .bg-gray-100 { background-color: #232327; }
+html.dark .bg-gray-200 { background-color: #232328; }
+html.dark .bg-gray-300 { background-color: #3a3a41; }
+html.dark .text-gray-900,
+html.dark .text-\[\#0A0A0A\] { color: #f3f4f6; }
+html.dark .text-gray-700 { color: #d1d5db; }
+html.dark .text-gray-600,
+html.dark .text-gray-500 { color: #9ca3af; }
+html.dark .text-gray-400 { color: #8b8f99; }
+html.dark .text-gray-300 { color: #4b5563; }
+html.dark .border-gray-200 { border-color: #2a2a30; }
+html.dark .border-gray-300 { border-color: #3a3a42; }
+html.dark .hover\:text-black:hover { color: #ffffff; }
+html.dark .hover\:border-black:hover,
+html.dark .focus\:border-black:focus { border-color: #ffffff; }
+html.dark .hover\:bg-gray-200:hover { background-color: #232328; }
+html.dark .shadow-gray-200,
+html.dark .shadow-gray-300\/50 { --tw-shadow-color: rgba(0, 0, 0, 0.6); --tw-shadow: var(--tw-shadow-colored); }
+/* solid buttons/pills flip to light so they stay visible */
+html.dark .eq-bar,
+html.dark .bg-black.text-white:not(.keep-dark),
+html.dark .bg-\[\#1A1A1A\].text-white:not(.keep-dark) { background-color: #f3f3f1; }
+html.dark .bg-black.text-white:not(.keep-dark),
+html.dark .bg-\[\#1A1A1A\].text-white:not(.keep-dark) { color: #0a0a0a; }
+html.dark .bg-black.text-white:not(.keep-dark):hover,
+html.dark .bg-\[\#1A1A1A\].text-white:not(.keep-dark):hover { background-color: #ffffff; }
+
+/* Theme toggle */
+.theme-toggle { position: relative; width: 2.75rem; height: 2.75rem; }
+.theme-toggle svg {
+    position: absolute; inset: 0; margin: auto; width: 1.1rem; height: 1.1rem;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+.theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+html.dark .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+html.dark .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
+
+/* Theme change animation: circular reveal (View Transitions) with smooth-fade fallback */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+html.theme-fade, html.theme-fade * {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease !important;
+}
+
+/* Back to top button */
+.back-to-top {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.back-to-top.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+.back-to-top.is-visible:hover { transform: translateY(-3px) scale(1.08); }
+#back-to-top-progress { transition: stroke-dashoffset 0.15s linear; }
 </style>
 </head>
 <body class="min-h-screen lg:p-6 selection:bg-blue-500/30 selection:text-blue-200 text-slate-900 bg-stone-300 pt-4 pr-4 pb-4 pl-4">
@@ -78,7 +161,7 @@ html::-webkit-scrollbar {
 <main class="w-full max-w-[1400px] mx-auto bg-[#F3F3F1] rounded-[2.5rem] shadow-2xl relative flex flex-col overflow-hidden">
 
 <!-- Navigation -->
-<header class="flex lg:px-12 pt-8 pr-8 pb-8 pl-8 items-center justify-between">
+<header class="flex lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12 pt-8 pr-8 pb-8 pl-8 items-center justify-between">
 <!-- Logo -->
 <div class="flex items-center gap-1 group cursor-pointer">
 <div class="eq-bar h-6 w-2 bg-black rounded-full" style="animation-delay: 0s"></div>
@@ -89,10 +172,15 @@ html::-webkit-scrollbar {
 <nav class="hidden lg:flex items-center gap-10">
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#sobre">Sobre</a>
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#projetos">Projetos</a>
+<a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#stack">Stack</a>
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#contato">Contato</a>
 </nav>
 <!-- Actions -->
-<div class="flex items-center gap-4">
+<div class="flex items-center gap-4 lg:justify-self-end">
+<button id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema" class="theme-toggle flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-700 hover:text-black hover:border-black hover:scale-105 transition-all">
+<i class="icon-moon" data-lucide="moon"></i>
+<i class="icon-sun" data-lucide="sun"></i>
+</button>
 <a href="#contato" class="flex items-center gap-2 bg-[#1A1A1A] text-white text-[0.7rem] font-medium uppercase tracking-widest px-6 py-3 rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-gray-300/50">
                     Fale comigo <i class="w-3 h-3" data-lucide="arrow-up-right"></i>
 </a>
@@ -104,7 +192,7 @@ html::-webkit-scrollbar {
 <!-- Left Column: Typography -->
 <div class="relative flex flex-col justify-center px-8 pb-12 pt-4 lg:px-12 xl:px-20 z-10">
 <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400 mb-6">
-                    Engenharia de Software Full Stack
+                    Desenvolvimento de Software Full Stack
                 </p>
 <div class="mb-6">
 <h1 class="text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tighter leading-[0.9] text-[#0A0A0A]">
@@ -141,19 +229,19 @@ html::-webkit-scrollbar {
 </div>
 </div>
 <div class="absolute bottom-12 right-8 lg:right-12">
-<div class="px-4 py-2 rounded-full border border-white/40 bg-white/10 backdrop-blur-xl text-white text-[0.6rem] font-semibold uppercase tracking-widest hover:bg-white/20 transition-colors cursor-default">
+<div class="px-4 py-2 rounded-full border border-white/20 keep-dark bg-[#1A1A1A]/90 backdrop-blur-xl text-white shadow-lg text-[0.6rem] font-semibold uppercase tracking-widest hover:bg-[#1A1A1A] transition-colors cursor-default">
                         Disponível para novos projetos
                     </div>
 </div>
 <div class="transform backdrop-blur-[2px] w-16 h-16 border-blue-300/50 border rounded-lg mx-28 absolute top-1/4 right-1/4 rotate-12"></div>
 <!-- Floating Logos: workplace & education -->
 <div class="float-logo absolute top-10 right-6 lg:right-14">
-<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white shadow-2xl p-2.5">
+<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white keep-light shadow-2xl p-2.5">
 <img alt="Logo Stack2U" class="w-full h-full object-contain" src="assets/img/logo-stack2u.png"/>
 </div>
 </div>
 <div class="float-logo float-logo-b absolute bottom-12 left-4 lg:left-10">
-<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white shadow-2xl p-2.5">
+<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white keep-light shadow-2xl p-2.5">
 <img alt="Logo Vem Ser Dev" class="w-full h-full object-contain" src="assets/img/logo-VSD.png"/>
 </div>
 </div>
@@ -233,27 +321,103 @@ html::-webkit-scrollbar {
 <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
 </div>
 <div class="project-slideshow relative w-full flex-1 min-h-0 bg-[#0A0A0F]">
-<img alt="BirB - Landing Page" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/birb-landing.png"/>
-<img alt="BirB - Dashboard" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/birb-dashboard.png"/>
+<img alt="Birbfy - Landing Page" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/birbfy-landing.png"/>
+<img alt="Birbfy - Dashboard" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/birb-dashboard.png"/>
 </div>
 </div>
 </div>
 </div>
 <div class="reveal flex flex-col justify-center items-start lg:pr-12">
-<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">BirB</h3>
+<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Birbfy</h3>
 <p class="text-lg text-gray-500 leading-relaxed font-normal mb-8 max-w-lg">
-                            Projeto pessoal de automação de atendimento via WhatsApp com IA — qualifica leads, responde 24h por dia e agenda atendimentos automaticamente, com dashboard completo de acompanhamento.
+                            Plataforma de automação de atendimento via WhatsApp com IA — qualifica leads, responde 24h por dia e agenda atendimentos automaticamente, com dashboard completo de acompanhamento.
+                        </p>
+<a class="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full text-xs font-medium uppercase tracking-widest hover:bg-gray-800 hover:scale-105 transition-all shadow-xl shadow-gray-200" href="https://birbfy.com.br" target="_blank" rel="noopener noreferrer">
+<i class="w-4 h-4" data-lucide="arrow-up-right"></i>
+                            Visitar Site
+                        </a>
+</div>
+</div>
+
+<!-- Project: Radar LéIA -->
+<div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
+<div class="reveal relative">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-2 bg-white keep-light pl-2 pr-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3 hover:rotate-0 transition-transform duration-300">
+<img alt="Logo Stack2U" class="w-5 h-5 object-contain" src="assets/img/logo-stack2u.png"/>
+                            <span><span class="text-[#E85830]">Stack</span><span class="text-[#902890]">2U</span></span>
+                        </div>
+<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
+<div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-teal-500 rounded-full blur-3xl opacity-10"></div>
+<div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
+<div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+</div>
+<div class="project-slideshow relative w-full flex-1 min-h-0 bg-[#05060F]">
+<img alt="Radar LéIA - Página inicial" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/radar-leia-1.png"/>
+<img alt="Radar LéIA - Calculadora de economia" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/radar-leia-2.png"/>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal flex flex-col justify-center items-start lg:pr-12">
+<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Radar LéIA</h3>
+<p class="text-lg text-gray-500 leading-relaxed font-normal mb-8 max-w-lg">
+                            Plataforma de planejamento logístico com a LéIA, assistente de IA que une OCR, TMS, programação e mapa em um só lugar — automatiza cadastros, viagens e follow-up, com calculadora de economia operacional.
+                        </p>
+<a class="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full text-xs font-medium uppercase tracking-widest hover:bg-gray-800 hover:scale-105 transition-all shadow-xl shadow-gray-200" href="https://radarleia.com.br/" target="_blank" rel="noopener noreferrer">
+<i class="w-4 h-4" data-lucide="arrow-up-right"></i>
+                            Visitar Site
+                        </a>
+</div>
+</div>
+
+<!-- Project 3: Fastwork -->
+<div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
+<div class="reveal relative">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-2 bg-white keep-light pl-2 pr-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3 hover:rotate-0 transition-transform duration-300">
+<img alt="Logo Stack2U" class="w-5 h-5 object-contain" src="assets/img/logo-stack2u.png"/>
+                            <span><span class="text-[#E85830]">Stack</span><span class="text-[#902890]">2U</span></span>
+                        </div>
+<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
+<div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-emerald-500 rounded-full blur-3xl opacity-10"></div>
+<div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
+<div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+</div>
+<div class="project-slideshow relative w-full flex-1 min-h-0 bg-white">
+<img alt="Fastwork - Login" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/fastwork-login.png"/>
+<img alt="Fastwork - Seleção de módulos" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/fastwork-modulos.png"/>
+<img alt="Fastwork - Módulo Configurador" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/fastwork-configurador.png"/>
+<img alt="Fastwork - Módulo Financeiro" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/fastwork-financeiro-1.png"/>
+<img alt="Fastwork - Conciliação de Extrato Bancário" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/fastwork-financeiro-2.png"/>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal flex flex-col justify-center items-start lg:pr-12">
+<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Fastwork</h3>
+<p class="text-lg text-gray-500 leading-relaxed font-normal mb-8 max-w-lg">
+                            Plataforma corporativa modular com controle de usuários e permissões, e módulos de financeiro, inspeção, produção e RH. O financeiro traz dashboard de faturamento, contas a pagar/receber e conciliação automática de extratos bancários (Protheus x PDF), com comparação de lançamentos por banco e período.
                         </p>
 <span class="inline-flex items-center gap-3 bg-gray-100 text-gray-500 px-8 py-4 rounded-full text-xs font-medium uppercase tracking-widest border border-gray-200">
-<i class="w-4 h-4" data-lucide="clock"></i>
-                            Em Desenvolvimento
+<i class="w-4 h-4" data-lucide="lock"></i>
+                            Sistema Interno
                         </span>
 </div>
 </div>
 
 <!-- Project 1: Misticrochet -->
 <div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
-<div class="reveal aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
+<div class="reveal relative">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3">
+<i class="w-3 h-3" data-lucide="handshake"></i>
+                            Cliente Próprio
+                        </div>
+<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
 <div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-pink-500 rounded-full blur-3xl opacity-10"></div>
 <div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
 <div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
@@ -264,6 +428,7 @@ html::-webkit-scrollbar {
 <div class="project-slideshow relative w-full flex-1 min-h-0 bg-white">
 <img alt="Misticrochet - Página inicial" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/misticrochet.png"/>
 <img alt="Misticrochet - Produtos" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/misticrochet-2.png"/>
+</div>
 </div>
 </div>
 </div>
@@ -281,7 +446,12 @@ html::-webkit-scrollbar {
 
 <!-- Project 2: Portolinea -->
 <div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
-<div class="reveal aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
+<div class="reveal relative">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3">
+<i class="w-3 h-3" data-lucide="handshake"></i>
+                            Cliente Próprio
+                        </div>
+<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
 <div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-orange-500 rounded-full blur-3xl opacity-10"></div>
 <div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
 <div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
@@ -292,6 +462,7 @@ html::-webkit-scrollbar {
 <div class="project-slideshow relative w-full flex-1 min-h-0 bg-white">
 <img alt="Portolinea - Página inicial" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/portolinea.png"/>
 <img alt="Portolinea - Diferenciais" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/portolinea-2.png"/>
+</div>
 </div>
 </div>
 </div>
@@ -307,10 +478,15 @@ html::-webkit-scrollbar {
 </div>
 </div>
 
-<!-- Project 3: FastWork Financeiro -->
+<!-- Project 4: Software Mágico -->
 <div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
-<div class="reveal aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
-<div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-emerald-500 rounded-full blur-3xl opacity-10"></div>
+<div class="reveal relative">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3">
+<i class="w-3 h-3" data-lucide="handshake"></i>
+                            Cliente Próprio
+                        </div>
+<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
+<div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-pink-500 rounded-full blur-3xl opacity-10"></div>
 <div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
 <div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
 <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
@@ -318,23 +494,58 @@ html::-webkit-scrollbar {
 <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
 </div>
 <div class="project-slideshow relative w-full flex-1 min-h-0 bg-white">
-<img alt="FastWork Financeiro - Dashboard do Módulo Financeiro" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/fastwork-financeiro-1.png"/>
-<img alt="FastWork Financeiro - Conciliação de Extrato Bancário" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/fastwork-financeiro-2.png"/>
+<img alt="Software Mágico - Dashboard" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/software-magico-1.png"/>
+<img alt="Software Mágico - Layout de Mesas" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/software-magico-2.png"/>
+</div>
 </div>
 </div>
 </div>
 <div class="reveal flex flex-col justify-center items-start lg:pr-12">
-<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Fastwork Financeiro</h3>
+<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Software Mágico</h3>
 <p class="text-lg text-gray-500 leading-relaxed font-normal mb-8 max-w-lg">
-                            Módulo financeiro corporativo com dashboard de faturamento, contas a pagar/receber e conciliação automática de extratos bancários (Protheus x PDF), com comparação de lançamentos por banco e período.
+                            Sistema de gestão para buffets infantis — dashboard de festas e faturamento, calendário, contratos, cardápios, layout de mesas e manutenções, com suporte a várias unidades da franquia.
                         </p>
-<span class="inline-flex items-center gap-3 bg-gray-100 text-gray-500 px-8 py-4 rounded-full text-xs font-medium uppercase tracking-widest border border-gray-200">
-<i class="w-4 h-4" data-lucide="lock"></i>
-                            Sistema Interno
-                        </span>
 </div>
 </div>
 
+</div>
+</section>
+
+<!-- Stack Section -->
+<section id="stack" class="lg:px-16 xl:px-24 pt-16 pr-8 pb-8 pl-8">
+<div class="reveal flex flex-col gap-2 mb-10">
+<span class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Stack</span>
+<h2 class="text-3xl font-medium tracking-tight text-gray-900">Tecnologias</h2>
+</div>
+<div class="border-y border-gray-200" data-reveal-group>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Frontend</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>React</span><span class="text-gray-300 mx-2">·</span><span>Next.js</span><span class="text-gray-300 mx-2">·</span><span>Vite</span><span class="text-gray-300 mx-2">·</span><span>Vue</span></p>
+</div>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Backend</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>Node.js</span><span class="text-gray-300 mx-2">·</span><span>Express</span><span class="text-gray-300 mx-2">·</span><span>Fastify</span><span class="text-gray-300 mx-2">·</span><span>NestJS</span></p>
+</div>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Linguagens</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>JavaScript</span><span class="text-gray-300 mx-2">·</span><span>TypeScript</span><span class="text-gray-300 mx-2">·</span><span>Golang</span></p>
+</div>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Banco de dados</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>PostgreSQL</span><span class="text-gray-300 mx-2">·</span><span>SQLite</span><span class="text-gray-300 mx-2">·</span><span>SQL Server</span></p>
+</div>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">AWS</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>S3 (Bucket)</span><span class="text-gray-300 mx-2">·</span><span>URL assinada</span><span class="text-gray-300 mx-2">·</span><span>Básico</span></p>
+</div>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Versionamento</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>Git</span><span class="text-gray-300 mx-2">·</span><span>GitHub</span><span class="text-gray-300 mx-2">·</span><span>Bitbucket</span></p>
+</div>
+<div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
+<span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">IAs</span>
+<p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>Claude Code</span><span class="text-gray-300 mx-2">·</span><span>Gemini</span><span class="text-gray-300 mx-2">·</span><span>ChatGPT</span><span class="text-gray-300 mx-2">·</span><span>DeepSeek</span></p>
+</div>
 </div>
 </section>
 
@@ -402,9 +613,25 @@ html::-webkit-scrollbar {
 </div>
 <p class="text-xs text-gray-500 text-center">© 2026 Filipe Martins. Todos os direitos reservados.</p>
 </div>
+<div/>
 </footer>
 
 </main>
+
+<!-- Back to top button -->
+<button id="back-to-top" type="button" aria-label="Voltar ao topo" title="Voltar ao topo" class="back-to-top group fixed bottom-[5.5rem] right-6 lg:bottom-[6.25rem] lg:right-[2.25rem] z-50 flex items-center justify-center w-12 h-12 rounded-full bg-[#1A1A1A] text-white shadow-xl shadow-black/25">
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+<circle cx="24" cy="24" r="22" stroke="currentColor" stroke-opacity="0.2" stroke-width="2"/>
+<circle id="back-to-top-progress" cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="138.23" stroke-dashoffset="138.23"/>
+</svg>
+<i class="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" data-lucide="arrow-up"></i>
+</button>
+
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/5519992631917?text=Ol%C3%A1%2C%20Filipe!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" title="Chamar no WhatsApp" class="fixed bottom-5 right-5 lg:bottom-8 lg:right-8 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl shadow-black/25 hover:scale-110 transition-transform">
+<span class="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping" style="animation-duration: 2.5s"></span>
+<svg class="relative w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 <script>
         lucide.createIcons();
 
@@ -439,5 +666,62 @@ html::-webkit-scrollbar {
         }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+        // Theme toggle (circular reveal via View Transitions, fade fallback)
+        (() => {
+            const root = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const setTheme = (dark) => {
+                root.classList.toggle('dark', dark);
+                try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+            };
+
+            toggle.addEventListener('click', () => {
+                const dark = !root.classList.contains('dark');
+
+                if (!document.startViewTransition || reduceMotion) {
+                    root.classList.add('theme-fade');
+                    setTheme(dark);
+                    setTimeout(() => root.classList.remove('theme-fade'), 600);
+                    return;
+                }
+
+                const rect = toggle.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+                document.startViewTransition(() => setTheme(dark)).ready.then(() => {
+                    root.animate(
+                        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+                        { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', pseudoElement: '::view-transition-new(root)' }
+                    );
+                });
+            });
+        })();
+
+        // Back to top button
+        (() => {
+            const button = document.getElementById('back-to-top');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const ring = document.getElementById('back-to-top-progress');
+            const circumference = 2 * Math.PI * 22;
+
+            const update = () => {
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+                button.classList.toggle('is-visible', window.scrollY > 400);
+                ring.style.strokeDashoffset = circumference * (1 - progress);
+            };
+
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+            button.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+            });
+        })();
     </script>
 </body></html>
