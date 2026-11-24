@@ -3,21 +3,13 @@
 <meta name="description" content="Portfólio de Filipe Martins — Desenvolvedor Full Stack especializado em JavaScript, React, Node.js e Go.">
 <meta name="keywords" content="JavaScript, TypeScript, React, Node.js, Go, Full Stack, Portfolio">
 <title>Filipe Martins — Desenvolvedor Full Stack</title>
-<script>
-(function () {
-    try {
-        var saved = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
-    } catch (e) {}
-})();
-</script>
 <script src="assets/resource_3fa48481346f.js"></script>
 <script src="assets/lucide_latest_2eebd0ebe8c2.js"></script>
 <style>
 @import url("assets/css2_19fd9cc6b396.css");
 body { font-family: 'Inter', sans-serif; }
 html {
+    color-scheme: light;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -85,61 +77,6 @@ html::-webkit-scrollbar {
     animation-duration: 8.5s;
 }
 
-/* ===== Dark theme ===== */
-html { color-scheme: light; }
-html.dark { color-scheme: dark; }
-html.dark body { background-color: #08080a; color: #e5e7eb; }
-html.dark .bg-stone-300 { background-color: #08080a; }
-html.dark .bg-\[\#F3F3F1\] { background-color: #131316; }
-html.dark .bg-white:not(.keep-light) { background-color: #1c1c20; }
-html.dark .bg-white\/60 { background-color: rgba(255, 255, 255, 0.03); }
-html.dark .bg-gray-50 { background-color: #17171a; }
-html.dark .bg-gray-100 { background-color: #232327; }
-html.dark .bg-gray-200 { background-color: #232328; }
-html.dark .bg-gray-300 { background-color: #3a3a41; }
-html.dark .text-gray-900,
-html.dark .text-\[\#0A0A0A\] { color: #f3f4f6; }
-html.dark .text-gray-700 { color: #d1d5db; }
-html.dark .text-gray-600,
-html.dark .text-gray-500 { color: #9ca3af; }
-html.dark .text-gray-400 { color: #8b8f99; }
-html.dark .text-gray-300 { color: #4b5563; }
-html.dark .border-gray-200 { border-color: #2a2a30; }
-html.dark .border-gray-300 { border-color: #3a3a42; }
-html.dark .hover\:text-black:hover { color: #ffffff; }
-html.dark .hover\:border-black:hover,
-html.dark .focus\:border-black:focus { border-color: #ffffff; }
-html.dark .hover\:bg-gray-200:hover { background-color: #232328; }
-html.dark .shadow-gray-200,
-html.dark .shadow-gray-300\/50 { --tw-shadow-color: rgba(0, 0, 0, 0.6); --tw-shadow: var(--tw-shadow-colored); }
-/* solid buttons/pills flip to light so they stay visible */
-html.dark .eq-bar,
-html.dark .bg-black.text-white:not(.keep-dark),
-html.dark .bg-\[\#1A1A1A\].text-white:not(.keep-dark) { background-color: #f3f3f1; }
-html.dark .bg-black.text-white:not(.keep-dark),
-html.dark .bg-\[\#1A1A1A\].text-white:not(.keep-dark) { color: #0a0a0a; }
-html.dark .bg-black.text-white:not(.keep-dark):hover,
-html.dark .bg-\[\#1A1A1A\].text-white:not(.keep-dark):hover { background-color: #ffffff; }
-
-/* Theme toggle */
-.theme-toggle { position: relative; width: 2.75rem; height: 2.75rem; }
-.theme-toggle svg {
-    position: absolute; inset: 0; margin: auto; width: 1.1rem; height: 1.1rem;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
-}
-.theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.4); }
-html.dark .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
-html.dark .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
-
-/* Theme change animation: circular reveal (View Transitions) with smooth-fade fallback */
-::view-transition-old(root),
-::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-old(root) { z-index: 1; }
-::view-transition-new(root) { z-index: 2; }
-html.theme-fade, html.theme-fade * {
-    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease !important;
-}
-
 /* Back to top button */
 .back-to-top {
     opacity: 0;
@@ -173,14 +110,11 @@ html.theme-fade, html.theme-fade * {
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#sobre">Sobre</a>
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#projetos">Projetos</a>
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#stack">Stack</a>
+<a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#parceiros">Parceiros</a>
 <a class="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors" href="#contato">Contato</a>
 </nav>
 <!-- Actions -->
 <div class="flex items-center gap-4 lg:justify-self-end">
-<button id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema" class="theme-toggle flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-700 hover:text-black hover:border-black hover:scale-105 transition-all">
-<i class="icon-moon" data-lucide="moon"></i>
-<i class="icon-sun" data-lucide="sun"></i>
-</button>
 <a href="#contato" class="flex items-center gap-2 bg-[#1A1A1A] text-white text-[0.7rem] font-medium uppercase tracking-widest px-6 py-3 rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-gray-300/50">
                     Fale comigo <i class="w-3 h-3" data-lucide="arrow-up-right"></i>
 </a>
@@ -229,19 +163,19 @@ html.theme-fade, html.theme-fade * {
 </div>
 </div>
 <div class="absolute bottom-12 right-8 lg:right-12">
-<div class="px-4 py-2 rounded-full border border-white/20 keep-dark bg-[#1A1A1A]/90 backdrop-blur-xl text-white shadow-lg text-[0.6rem] font-semibold uppercase tracking-widest hover:bg-[#1A1A1A] transition-colors cursor-default">
+<div class="px-4 py-2 rounded-full border border-white/20 bg-[#1A1A1A]/90 backdrop-blur-xl text-white shadow-lg text-[0.6rem] font-semibold uppercase tracking-widest hover:bg-[#1A1A1A] transition-colors cursor-default">
                         Disponível para novos projetos
                     </div>
 </div>
 <div class="transform backdrop-blur-[2px] w-16 h-16 border-blue-300/50 border rounded-lg mx-28 absolute top-1/4 right-1/4 rotate-12"></div>
 <!-- Floating Logos: workplace & education -->
 <div class="float-logo absolute top-10 right-6 lg:right-14">
-<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white keep-light shadow-2xl p-2.5">
+<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white shadow-2xl p-2.5">
 <img alt="Logo Stack2U" class="w-full h-full object-contain" src="assets/img/logo-stack2u.png"/>
 </div>
 </div>
 <div class="float-logo float-logo-b absolute bottom-12 left-4 lg:left-10">
-<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white keep-light shadow-2xl p-2.5">
+<div class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white shadow-2xl p-2.5">
 <img alt="Logo Vem Ser Dev" class="w-full h-full object-contain" src="assets/img/logo-VSD.png"/>
 </div>
 </div>
@@ -339,10 +273,44 @@ html.theme-fade, html.theme-fade * {
 </div>
 </div>
 
+<!-- Project: Festa Flow (Personal Project) -->
+<div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
+<div class="reveal relative">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-1.5 bg-violet-600 text-white px-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3">
+<i class="w-3 h-3" data-lucide="sparkles"></i>
+                            Projeto Pessoal
+                        </div>
+<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
+<div class="absolute -top-[-20%] left-[-20%] w-[70%] h-[70%] bg-pink-500 rounded-full blur-3xl opacity-10"></div>
+<div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
+<div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+</div>
+<div class="project-slideshow relative w-full flex-1 min-h-0 bg-white">
+<img alt="Festa Flow - Dashboard" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/festa-flow-dashboard-v1.png"/>
+<img alt="Festa Flow - Layout de Mesas" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/festa-flow-layout-v1.png"/>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal flex flex-col justify-center items-start lg:pr-12">
+<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Festa Flow</h3>
+<p class="text-lg text-gray-500 leading-relaxed font-normal mb-8 max-w-lg">
+                            Sistema de gestão para buffets e festas infantis — dashboard de festas e faturamento, calendário, contratos, cardápios e layout de mesas, com suporte a múltiplas unidades.
+                        </p>
+<span class="inline-flex items-center gap-3 bg-gray-100 text-gray-500 px-8 py-4 rounded-full text-xs font-medium uppercase tracking-widest border border-gray-200">
+<i class="w-4 h-4" data-lucide="hammer"></i>
+                            Em construção
+                        </span>
+</div>
+</div>
+
 <!-- Project: Radar LéIA -->
 <div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
 <div class="reveal relative">
-<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-2 bg-white keep-light pl-2 pr-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3 hover:rotate-0 transition-transform duration-300">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-2 bg-white pl-2 pr-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3 hover:rotate-0 transition-transform duration-300">
 <img alt="Logo Stack2U" class="w-5 h-5 object-contain" src="assets/img/logo-stack2u.png"/>
                             <span><span class="text-[#E85830]">Stack</span><span class="text-[#902890]">2U</span></span>
                         </div>
@@ -376,7 +344,7 @@ html.theme-fade, html.theme-fade * {
 <!-- Project 3: Fastwork -->
 <div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
 <div class="reveal relative">
-<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-2 bg-white keep-light pl-2 pr-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3 hover:rotate-0 transition-transform duration-300">
+<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-2 bg-white pl-2 pr-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3 hover:rotate-0 transition-transform duration-300">
 <img alt="Logo Stack2U" class="w-5 h-5 object-contain" src="assets/img/logo-stack2u.png"/>
                             <span><span class="text-[#E85830]">Stack</span><span class="text-[#902890]">2U</span></span>
                         </div>
@@ -478,36 +446,6 @@ html.theme-fade, html.theme-fade * {
 </div>
 </div>
 
-<!-- Project 4: Software Mágico -->
-<div class="group grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center" data-reveal-group>
-<div class="reveal relative">
-<div class="absolute -top-3 -left-3 z-20 inline-flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-1.5 rounded-full text-[0.65rem] font-bold uppercase tracking-widest shadow-lg -rotate-3">
-<i class="w-3 h-3" data-lucide="handshake"></i>
-                            Cliente Próprio
-                        </div>
-<div class="aspect-square lg:aspect-[4/3] overflow-hidden flex bg-gray-200 w-full rounded-[2.5rem] relative shadow-inner items-center justify-center">
-<div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] bg-pink-500 rounded-full blur-3xl opacity-10"></div>
-<div class="overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 bg-white w-[90%] h-[90%] rounded-[1.25rem] relative shadow-2xl border border-gray-200 flex flex-col">
-<div class="flex items-center gap-1.5 px-4 h-8 bg-gray-50 border-b border-gray-200 shrink-0">
-<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-</div>
-<div class="project-slideshow relative w-full flex-1 min-h-0 bg-white">
-<img alt="Software Mágico - Dashboard" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-100" src="assets/img/projects/software-magico-1.png"/>
-<img alt="Software Mágico - Layout de Mesas" class="project-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out opacity-0" src="assets/img/projects/software-magico-2.png"/>
-</div>
-</div>
-</div>
-</div>
-<div class="reveal flex flex-col justify-center items-start lg:pr-12">
-<h3 class="text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-6">Software Mágico</h3>
-<p class="text-lg text-gray-500 leading-relaxed font-normal mb-8 max-w-lg">
-                            Sistema de gestão para buffets infantis — dashboard de festas e faturamento, calendário, contratos, cardápios, layout de mesas e manutenções, com suporte a várias unidades da franquia.
-                        </p>
-</div>
-</div>
-
 </div>
 </section>
 
@@ -545,6 +483,43 @@ html.theme-fade, html.theme-fade * {
 <div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-6 border-t border-gray-200 first:border-t-0">
 <span class="md:w-48 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">IAs</span>
 <p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900"><span>Claude Code</span><span class="text-gray-300 mx-2">·</span><span>Gemini</span><span class="text-gray-300 mx-2">·</span><span>ChatGPT</span><span class="text-gray-300 mx-2">·</span><span>DeepSeek</span></p>
+</div>
+</div>
+</section>
+
+<!-- Partners Section -->
+<section id="parceiros" class="lg:px-16 xl:px-24 pt-16 pr-8 pb-8 pl-8">
+<div class="reveal flex flex-col gap-2 mb-10">
+<span class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400">Parcerias</span>
+<h2 class="text-3xl font-medium tracking-tight text-gray-900">Parceiros</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" data-reveal-group>
+<div class="reveal flex items-center gap-6 rounded-[2rem] border border-gray-200 bg-white/60 p-8">
+<div class="flex items-center justify-center w-20 h-20 shrink-0 rounded-2xl bg-white p-4 shadow-sm">
+<img alt="Logo Stack2U" class="w-full h-full object-contain" src="assets/img/logo-stack2u.png"/>
+</div>
+<div>
+<h3 class="text-2xl font-medium tracking-tight text-gray-900">Stack2U</h3>
+<p class="text-sm text-gray-500 mt-1">Parceiro de projetos</p>
+</div>
+</div>
+<div class="reveal flex items-center gap-6 rounded-[2rem] border border-gray-200 bg-white/60 p-8">
+<div class="flex items-center justify-center w-20 h-20 shrink-0 rounded-2xl bg-white p-4 shadow-sm">
+<img alt="Logo Vem Ser Dev" class="w-full h-full object-contain" src="assets/img/logo-VSD.png"/>
+</div>
+<div>
+<h3 class="text-2xl font-medium tracking-tight text-gray-900">VSD</h3>
+<p class="text-sm text-gray-500 mt-1">Vem Ser Dev</p>
+</div>
+</div>
+<div class="reveal flex items-center gap-6 rounded-[2rem] border border-gray-200 bg-white/60 p-8">
+<div class="flex items-center justify-center w-32 h-20 shrink-0 rounded-2xl bg-white p-3 shadow-sm">
+<img alt="Logo C2T Tecnologia" class="w-full h-full object-contain rounded-xl" src="assets/img/logo-c2t-rounded.png"/>
+</div>
+<div>
+<h3 class="text-2xl font-medium tracking-tight text-gray-900">C2T</h3>
+<p class="text-sm text-gray-500 mt-1">Parceiro de projetos</p>
+</div>
 </div>
 </div>
 </section>
@@ -597,7 +572,6 @@ html.theme-fade, html.theme-fade * {
 <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
                         Facebook
                     </a>
-</div>
 </div>
 </div>
 </div>
@@ -666,41 +640,6 @@ html.theme-fade, html.theme-fade * {
         }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
-
-        // Theme toggle (circular reveal via View Transitions, fade fallback)
-        (() => {
-            const root = document.documentElement;
-            const toggle = document.getElementById('theme-toggle');
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            const setTheme = (dark) => {
-                root.classList.toggle('dark', dark);
-                try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
-            };
-
-            toggle.addEventListener('click', () => {
-                const dark = !root.classList.contains('dark');
-
-                if (!document.startViewTransition || reduceMotion) {
-                    root.classList.add('theme-fade');
-                    setTheme(dark);
-                    setTimeout(() => root.classList.remove('theme-fade'), 600);
-                    return;
-                }
-
-                const rect = toggle.getBoundingClientRect();
-                const x = rect.left + rect.width / 2;
-                const y = rect.top + rect.height / 2;
-                const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-
-                document.startViewTransition(() => setTheme(dark)).ready.then(() => {
-                    root.animate(
-                        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-                        { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', pseudoElement: '::view-transition-new(root)' }
-                    );
-                });
-            });
-        })();
 
         // Back to top button
         (() => {
